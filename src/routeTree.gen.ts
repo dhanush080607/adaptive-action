@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedCaptureRouteImport } from './routes/_authenticated/capture'
+import { Route as AuthenticatedContextRouteImport } from './routes/_authenticated/context'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 
 const IndexRoute = IndexRouteImport.update({
@@ -34,6 +35,11 @@ const AuthenticatedCaptureRoute = AuthenticatedCaptureRouteImport.update({
   path: '/capture',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedContextRoute = AuthenticatedContextRouteImport.update({
+  id: '/context',
+  path: '/context',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -44,12 +50,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/capture': typeof AuthenticatedCaptureRoute
+  '/context': typeof AuthenticatedContextRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/capture': typeof AuthenticatedCaptureRoute
+  '/context': typeof AuthenticatedContextRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
 }
 export interface FileRoutesById {
@@ -58,19 +66,21 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/capture': typeof AuthenticatedCaptureRoute
+  '/_authenticated/context': typeof AuthenticatedContextRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/capture' | '/dashboard'
+  fullPaths: '/' | '/auth' | '/capture' | '/context' | '/dashboard'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/capture' | '/dashboard'
+  to: '/' | '/auth' | '/capture' | '/context' | '/dashboard'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/capture'
+    | '/_authenticated/context'
     | '/_authenticated/dashboard'
   fileRoutesById: FileRoutesById
 }
@@ -110,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCaptureRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/context': {
+      id: '/_authenticated/context'
+      path: '/context'
+      fullPath: '/context'
+      preLoaderRoute: typeof AuthenticatedContextRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
@@ -122,11 +139,13 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedCaptureRoute: typeof AuthenticatedCaptureRoute
+  AuthenticatedContextRoute: typeof AuthenticatedContextRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCaptureRoute: AuthenticatedCaptureRoute,
+  AuthenticatedContextRoute: AuthenticatedContextRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
 }
 
