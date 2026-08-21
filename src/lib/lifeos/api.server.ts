@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Database } from "@/integrations/supabase/types";
+import type { Database, Json } from "@/integrations/supabase/types";
 import { AiUnavailableError, generateStructured } from "./ai.server";
 import { localExtractContext, resolveDatePhrase } from "./fallback";
 import { buildPlan, evaluateFeedback, formatMinutes, selectNextAction } from "./planner";
@@ -35,7 +35,7 @@ export async function loadTasks(sb: Sb): Promise<TaskRow[]> {
 }
 
 export async function logEvent(sb: Sb, event_type: string, details: Record<string, unknown> = {}) {
-  const { error } = await sb.from("activity_events").insert({ event_type, details });
+  const { error } = await sb.from("activity_events").insert({ event_type, details: details as Json });
   if (error) console.error("[lifeos] activity log failed", error.message);
 }
 
@@ -149,7 +149,7 @@ Current time is ${now.toISOString()} (UTC).`;
       system,
       user: raw,
     });
-    return { extraction, engine: "ai" };
+    return { extraction: contextExtractionSchema.parse(extraction), engine: "ai" };
   } catch (err) {
     const e = err as AiUnavailableError;
     console.error("[lifeos] context AI failed, using local fallback:", e.code ?? e.message);
@@ -202,7 +202,7 @@ Time available in this session: ${args.availableMinutes} minutes`;
       system,
       user,
     });
-    return { evaluation, engine: "ai" };
+    return { evaluation: evaluationSchema.parse(evaluation), engine: "ai" };
   } catch (err) {
     console.error("[lifeos] evaluation AI failed, using deterministic evaluation");
     return { evaluation: local, engine: "fallback" };

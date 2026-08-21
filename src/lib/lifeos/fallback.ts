@@ -32,7 +32,7 @@ export function resolveDatePhrase(phrase: string, now = new Date()): string | nu
   if (inWeeks) return at(new Date(now.getTime() + Number(inWeeks[1]) * 7 * 86400000), 23);
   if (/next week/.test(p)) return at(new Date(now.getTime() + 7 * 86400000), 23);
   for (let i = 0; i < WEEKDAYS.length; i++) {
-    if (p.includes(WEEKDAYS[i])) {
+    if (p.includes(WEEKDAYS[i]!)) {
       let delta = (i - now.getDay() + 7) % 7;
       if (delta === 0) delta = 7;
       return at(new Date(now.getTime() + delta * 86400000), 18);
@@ -47,7 +47,7 @@ function extractMinutes(text: string): { label: string; minutes: number }[] {
   let m: RegExpExecArray | null;
   while ((m = re.exec(text))) {
     const value = Number(m[1]);
-    const unit = m[2].toLowerCase();
+    const unit = (m[2] ?? "").toLowerCase();
     const minutes = unit.startsWith("h") ? Math.round(value * 60) : Math.round(value);
     const tail = (m[3] || "").trim();
     const context = `${m[0]}`.trim();

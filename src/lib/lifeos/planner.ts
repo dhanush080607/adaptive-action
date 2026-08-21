@@ -121,7 +121,7 @@ export function selectNextAction(tasks: ScorableTask[], now = new Date()): NextA
     .sort((a, b) => b.p.score - a.p.score);
 
   if (ranked.length === 0) return null;
-  const top = ranked[0];
+  const top = ranked[0]!;
   const second = ranked[1];
   const gap = second ? top.p.score - second.p.score : 25;
   const confidence = Math.min(0.98, 0.62 + gap / 100 + top.p.score / 500);

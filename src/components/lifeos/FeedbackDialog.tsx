@@ -125,14 +125,13 @@ export function FeedbackDialog({
           </Button>
           <Button
             disabled={submitting}
-            onClick={() =>
-              onSubmit({
-                kind,
-                note: note.trim() || undefined,
-                actual_minutes: actual ? Number(actual) : undefined,
-                progress: progress ? Number(progress) : undefined,
-              })
-            }
+            onClick={() => {
+              const payload: Parameters<typeof onSubmit>[0] = { kind };
+              if (note.trim()) payload.note = note.trim();
+              if (actual) payload.actual_minutes = Number(actual);
+              if (progress) payload.progress = Number(progress);
+              onSubmit(payload);
+            }}
           >
             {submitting ? "Evaluating…" : "Submit & replan"}
           </Button>
