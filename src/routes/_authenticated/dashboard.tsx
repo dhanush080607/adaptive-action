@@ -194,7 +194,7 @@ function Dashboard() {
                           {formatMinutesLabel(t.estimated_minutes)} · {formatDue(t.deadline)}
                         </span>
                       </span>
-                      <PriorityBadge level={t.priority_level} />
+                      <PriorityBadge level={t.priority} />
                     </Link>
                   </li>
                 ))}

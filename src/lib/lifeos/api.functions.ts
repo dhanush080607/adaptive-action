@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import type { Database } from "@/integrations/supabase/types";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { z } from "zod";
 import {
@@ -18,6 +19,8 @@ import {
 import { computePriority } from "./priority";
 import { contextExtractionSchema, FeedbackKinds, TaskStatuses } from "./types";
 import { DEMO_INPUT } from "./demo";
+
+type TaskUpdate = Database["public"]["Tables"]["tasks"]["Update"];
 
 export const analyzeContext = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
@@ -193,7 +196,16 @@ export const createTask = createServerFn({ method: "POST" })
   .handler(async ({ data, context }) => {
     const { data: row, error } = await context.supabase
       .from("tasks")
-      .insert({ ...data, description: data.description ?? null, source: "manual" })
+      .insert({
+        title: data.title,
+        estimated_minutes: data.estimated_minutes,
+        importance: data.importance,
+        urgency: data.urgency,
+        deadline: data.deadline ?? null,
+        goal_id: data.goal_id ?? null,
+        description: data.description ?? null,
+        source: "manual",
+      })
       .select("*")
       .single();
     if (error) throw new Error(error.message);
@@ -223,7 +235,10 @@ export const updateTask = createServerFn({ method: "POST" })
       .parse(d),
   )
   .handler(async ({ data, context }) => {
-    const patch: Record<string, unknown> = { ...data.patch };
+    const patch: TaskUpdate = {};
+    for (const [key, value] of Object.entries(data.patch)) {
+      if (value !== undefined) (patch as Record<string, unknown>)[key] = value;
+    }
     if (data.patch.status === "completed") {
       patch.completed_at = new Date().toISOString();
       patch.progress = 100;
@@ -285,7 +300,7 @@ export const submitFeedback = createServerFn({ method: "POST" })
 
     const previous = await currentPlan(sb);
 
-    const patch: Record<string, unknown> = {};
+    const patch: TaskUpdate = {};
     switch (data.kind) {
       case "completed":
         patch.status = "completed";
