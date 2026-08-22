@@ -88,8 +88,8 @@ function TaskDetail() {
         <div className="flex flex-wrap items-center gap-3">
           <PriorityBadge level={task.priority} />
           <span className="text-xs text-muted-foreground">
-            {STATUS_LABELS[task.status] ?? task.status} · {formatMinutesLabel(task.estimated_minutes)}{" "}
-            · {formatDue(task.deadline)}
+            {STATUS_LABELS[task.status] ?? task.status} ·{" "}
+            {formatMinutesLabel(task.estimated_minutes)} · {formatDue(task.deadline)}
           </span>
           <span className="ml-auto font-mono text-xs text-muted-foreground">
             score {priority.score}
@@ -99,9 +99,7 @@ function TaskDetail() {
         {task.description && (
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{task.description}</p>
         )}
-        {goal && (
-          <p className="mt-2 text-xs text-muted-foreground">Goal: {goal.title}</p>
-        )}
+        {goal && <p className="mt-2 text-xs text-muted-foreground">Goal: {goal.title}</p>}
         <div className="mt-5 flex flex-wrap gap-2">
           <Button onClick={() => setOpen(true)}>Give feedback</Button>
           <Button

@@ -87,9 +87,9 @@ function Capture() {
           <p className="label-caps">Capture</p>
           <h1 className="mt-2 text-3xl font-semibold">Give LifeOS your messy information.</h1>
           <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-            Write it exactly as you'd tell a friend. Deadlines, half-finished work, how much time you
-            have tonight — LifeOS will structure it and show you what it understood before anything
-            changes.
+            Write it exactly as you'd tell a friend. Deadlines, half-finished work, how much time
+            you have tonight — LifeOS will structure it and show you what it understood before
+            anything changes.
           </p>
 
           <Textarea

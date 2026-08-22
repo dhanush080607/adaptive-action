@@ -24,9 +24,7 @@ type TaskUpdate = Database["public"]["Tables"]["tasks"]["Update"];
 
 export const analyzeContext = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) =>
-    z.object({ raw_input: z.string().min(4).max(20000) }).parse(d),
-  )
+  .inputValidator((d: unknown) => z.object({ raw_input: z.string().min(4).max(20000) }).parse(d))
   .handler(async ({ data, context }) => {
     const now = new Date();
     const { extraction, engine, notice } = await extractContext(data.raw_input, now);
@@ -275,7 +273,11 @@ export const replan = createServerFn({ method: "POST" })
       availableMinutes: minutes,
       isReplan: true,
     });
-    return { plan: result.plan, warnings: result.warnings, next_action: await nextActionFor(context.supabase) };
+    return {
+      plan: result.plan,
+      warnings: result.warnings,
+      next_action: await nextActionFor(context.supabase),
+    };
   });
 
 export const submitFeedback = createServerFn({ method: "POST" })
@@ -449,7 +451,15 @@ export const resetWorkspace = createServerFn({ method: "POST" })
   .handler(async ({ context }) => {
     const sb = context.supabase;
     const uid = context.userId;
-    for (const table of ["plan_items", "plans", "feedback", "deadlines", "tasks", "goals", "contexts"] as const) {
+    for (const table of [
+      "plan_items",
+      "plans",
+      "feedback",
+      "deadlines",
+      "tasks",
+      "goals",
+      "contexts",
+    ] as const) {
       await sb.from(table).delete().eq("user_id", uid);
     }
     await logEvent(sb, "workspace_reset", {});

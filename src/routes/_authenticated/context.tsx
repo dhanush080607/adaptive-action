@@ -48,7 +48,7 @@ function ContextReview() {
   });
 
   const extraction: ContextExtraction | null = data
-    ? contextExtractionSchema.safeParse({
+    ? (contextExtractionSchema.safeParse({
         context_summary: data.summary ?? "",
         goals: data.extracted_goals ?? [],
         tasks: data.extracted_tasks ?? [],
@@ -58,7 +58,7 @@ function ContextReview() {
         dependencies: data.dependencies ?? [],
         progress: data.progress ?? [],
         open_questions: [],
-      }).data ?? null
+      }).data ?? null)
     : null;
 
   useEffect(() => {
@@ -79,9 +79,7 @@ function ContextReview() {
       });
     },
     onSuccess: (result) => {
-      toast.success(
-        `Created ${result.counts.tasks} tasks and built your plan`,
-      );
+      toast.success(`Created ${result.counts.tasks} tasks and built your plan`);
       navigate({ to: "/dashboard" });
     },
     onError: (e: Error) => toast.error(e.message || "Could not build your plan"),
@@ -111,7 +109,9 @@ function ContextReview() {
         <header>
           <p className="label-caps">Context review</p>
           <h1 className="mt-2 text-3xl font-semibold">Here's what LifeOS understood</h1>
-          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{extraction.context_summary}</p>
+          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
+            {extraction.context_summary}
+          </p>
           <p className="mt-2 font-mono text-xs text-muted-foreground">
             engine: {data.engine ?? "unknown"}
           </p>

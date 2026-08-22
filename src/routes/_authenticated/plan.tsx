@@ -66,9 +66,7 @@ function PlanPage() {
           <div>
             <p className="label-caps">Planning engine</p>
             <h1 className="mt-2 text-3xl font-semibold">Your session plan</h1>
-            {plan && (
-              <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{plan.summary}</p>
-            )}
+            {plan && <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{plan.summary}</p>}
           </div>
           <div className="flex items-end gap-2">
             <div className="w-32 space-y-1.5">

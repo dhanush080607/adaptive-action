@@ -73,7 +73,10 @@ export async function generateStructured<T>(args: {
   for (let i = 0; i < 2; i++) {
     try {
       const content = await attempt();
-      const cleaned = content.replace(/^```(?:json)?/i, "").replace(/```$/, "").trim();
+      const cleaned = content
+        .replace(/^```(?:json)?/i, "")
+        .replace(/```$/, "")
+        .trim();
       const parsed = args.schema.safeParse(JSON.parse(cleaned));
       if (parsed.success) return parsed.data;
       lastError = new AiUnavailableError("AI response failed validation.", "AI_INVALID_SHAPE");

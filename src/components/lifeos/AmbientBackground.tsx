@@ -40,7 +40,11 @@ export function AmbientBackground({ state = "IDLE", density = "full" }: Props) {
     const height = () => canvas.clientHeight;
     const isMobile = window.innerWidth < 768;
     const base = density === "subtle" ? 26 : 52;
-    const count = isMobile ? Math.round(base * 0.45) : window.innerWidth < 1280 ? Math.round(base * 0.7) : base;
+    const count = isMobile
+      ? Math.round(base * 0.45)
+      : window.innerWidth < 1280
+        ? Math.round(base * 0.7)
+        : base;
     const linkDistance = isMobile ? 90 : 140;
     const alpha = density === "subtle" ? 0.35 : 0.7;
 

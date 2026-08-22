@@ -84,9 +84,7 @@ export function PlanTimeline({
                   item.title
                 )}
               </p>
-              {item.reason && (
-                <p className="mt-1 text-xs text-muted-foreground">{item.reason}</p>
-              )}
+              {item.reason && <p className="mt-1 text-xs text-muted-foreground">{item.reason}</p>}
             </div>
           </motion.li>
         ))}
