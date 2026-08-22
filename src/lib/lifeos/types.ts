@@ -65,7 +65,9 @@ export const contextExtractionSchema = z.object({
     .array(z.object({ label: z.string(), minutes: z.number().min(0).max(1440) }))
     .default([]),
   dependencies: z.array(z.object({ task: z.string(), depends_on: z.string() })).default([]),
-  progress: z.array(z.object({ task: z.string(), percent: z.number().min(0).max(100) })).default([]),
+  progress: z
+    .array(z.object({ task: z.string(), percent: z.number().min(0).max(100) }))
+    .default([]),
   open_questions: z.array(z.string()).default([]),
 });
 

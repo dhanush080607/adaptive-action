@@ -162,8 +162,7 @@ export function evaluateFeedback(args: {
   note?: string | null;
 }): LocalEvaluation {
   const { kind, taskTitle, estimatedMinutes, actualMinutes } = args;
-  const over =
-    actualMinutes && estimatedMinutes ? actualMinutes - estimatedMinutes : 0;
+  const over = actualMinutes && estimatedMinutes ? actualMinutes - estimatedMinutes : 0;
   const changes: string[] = [];
   let outcome = "";
   let should_replan = true;

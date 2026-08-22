@@ -2,11 +2,7 @@ import { Check, Loader2 } from "lucide-react";
 
 export type StepState = "done" | "active" | "pending";
 
-export function ProcessingSteps({
-  steps,
-}: {
-  steps: { label: string; state: StepState }[];
-}) {
+export function ProcessingSteps({ steps }: { steps: { label: string; state: StepState }[] }) {
   return (
     <ul className="space-y-3" aria-live="polite">
       {steps.map((s) => (

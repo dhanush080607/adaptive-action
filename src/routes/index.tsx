@@ -164,7 +164,10 @@ function Landing() {
           </Section>
 
           <div id="how-it-works">
-            <Section eyebrow="How LifeOS works" title="One continuous loop, not a pile of features.">
+            <Section
+              eyebrow="How LifeOS works"
+              title="One continuous loop, not a pile of features."
+            >
               <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {PIPELINE.map((p, i) => (
                   <li key={p.label} className="panel flex items-start gap-4 p-5">

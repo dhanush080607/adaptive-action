@@ -1,14 +1,6 @@
 import type { ContextExtraction } from "./types";
 
-const WEEKDAYS = [
-  "sunday",
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-];
+const WEEKDAYS = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
 /** Resolve common natural-language date phrases into a real timestamp. */
 export function resolveDatePhrase(phrase: string, now = new Date()): string | null {
@@ -75,7 +67,10 @@ export function localExtractContext(raw: string, now = new Date()): ContextExtra
   const progress: ContextExtraction["progress"] = [];
 
   const pushTask = (title: string, opts: Partial<ContextExtraction["tasks"][number]> = {}) => {
-    const clean = title.replace(/^[-*•\d.)\s]+/, "").replace(/[.,;:]+$/, "").trim();
+    const clean = title
+      .replace(/^[-*•\d.)\s]+/, "")
+      .replace(/[.,;:]+$/, "")
+      .trim();
     if (clean.length < 2 || clean.length > 140) return;
     if (tasks.some((t) => t.title.toLowerCase() === clean.toLowerCase())) return;
     tasks.push({

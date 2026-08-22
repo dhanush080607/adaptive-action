@@ -33,7 +33,10 @@ export function NextActionCard({
   }
 
   return (
-    <section className="focal-panel rise-in relative overflow-hidden p-6 sm:p-8" aria-labelledby="next-action-title">
+    <section
+      className="focal-panel rise-in relative overflow-hidden p-6 sm:p-8"
+      aria-labelledby="next-action-title"
+    >
       <div className="flex flex-wrap items-center gap-3">
         <p className="label-caps flex items-center gap-2 text-primary">
           <Sparkles className="h-3.5 w-3.5" /> Your next action

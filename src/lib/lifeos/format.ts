@@ -15,7 +15,8 @@ export function formatDue(iso: string | null): string {
   const now = new Date();
   const diffDays = Math.round((d.getTime() - now.getTime()) / 86400000);
   const time = d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
-  if (diffDays < 0) return `Overdue — ${d.toLocaleDateString(undefined, { month: "short", day: "numeric" })}`;
+  if (diffDays < 0)
+    return `Overdue — ${d.toLocaleDateString(undefined, { month: "short", day: "numeric" })}`;
   if (d.toDateString() === now.toDateString()) return `Today, ${time}`;
   if (diffDays <= 1) return `Tomorrow, ${time}`;
   if (diffDays <= 6) return `${d.toLocaleDateString(undefined, { weekday: "long" })}, ${time}`;
@@ -30,7 +31,8 @@ export function greeting(now = new Date()): string {
 }
 
 export const PRIORITY_STYLES: Record<string, string> = {
-  CRITICAL: "border-[color:var(--color-destructive)]/50 text-[color:var(--color-destructive)] bg-[color:var(--color-destructive)]/10",
+  CRITICAL:
+    "border-[color:var(--color-destructive)]/50 text-[color:var(--color-destructive)] bg-[color:var(--color-destructive)]/10",
   HIGH: "border-[color:var(--color-warning)]/50 text-[color:var(--color-warning)] bg-[color:var(--color-warning)]/10",
   MEDIUM: "border-primary/40 text-primary bg-primary/10",
   LOW: "border-border text-muted-foreground bg-muted/40",

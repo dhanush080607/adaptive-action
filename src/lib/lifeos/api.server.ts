@@ -35,7 +35,9 @@ export async function loadTasks(sb: Sb): Promise<TaskRow[]> {
 }
 
 export async function logEvent(sb: Sb, event_type: string, details: Record<string, unknown> = {}) {
-  const { error } = await sb.from("activity_events").insert({ event_type, details: details as Json });
+  const { error } = await sb
+    .from("activity_events")
+    .insert({ event_type, details: details as Json });
   if (error) console.error("[lifeos] activity log failed", error.message);
 }
 
@@ -243,7 +245,7 @@ export async function applyExtraction(
 
   for (const t of extraction.tasks) {
     if (existingTitles.has(t.title.toLowerCase())) continue;
-    const goalId = t.goal_title ? goalIdByTitle.get(t.goal_title.toLowerCase()) ?? null : null;
+    const goalId = t.goal_title ? (goalIdByTitle.get(t.goal_title.toLowerCase()) ?? null) : null;
     const deadline = resolveDatePhrase(t.deadline_text ?? "", now);
     const completed = t.status === "completed";
     const { data, error } = await sb
@@ -252,14 +254,15 @@ export async function applyExtraction(
         goal_id: goalId,
         title: t.title,
         description: t.description || null,
-        status: completed ? "completed" : t.status ?? "pending",
+        status: completed ? "completed" : (t.status ?? "pending"),
         progress: completed ? 100 : Math.round(t.progress ?? 0),
         importance: Math.round(t.importance ?? 3),
         urgency: Math.round(t.urgency ?? 3),
         estimated_minutes: Math.round(t.estimated_minutes ?? 45),
         deadline,
         source: "context",
-        reasoning: t.certainty === "explicit" ? "Stated directly in your input" : "Inferred from your input",
+        reasoning:
+          t.certainty === "explicit" ? "Stated directly in your input" : "Inferred from your input",
         completed_at: completed ? now.toISOString() : null,
       })
       .select("id")
@@ -277,13 +280,17 @@ export async function applyExtraction(
     const taskId = idFor(dep.task);
     const depId = idFor(dep.depends_on);
     if (!taskId || !depId || taskId === depId) continue;
-    await sb.from("tasks").update({ depends_on: [depId] }).eq("id", taskId);
+    await sb
+      .from("tasks")
+      .update({ depends_on: [depId] })
+      .eq("id", taskId);
   }
 
   for (const d of extraction.deadlines) {
-    const due = d.due_at && !Number.isNaN(Date.parse(d.due_at))
-      ? new Date(d.due_at).toISOString()
-      : resolveDatePhrase(d.due_text || d.title, now);
+    const due =
+      d.due_at && !Number.isNaN(Date.parse(d.due_at))
+        ? new Date(d.due_at).toISOString()
+        : resolveDatePhrase(d.due_text || d.title, now);
     if (!due) continue;
     const { data: dupe } = await sb
       .from("deadlines")

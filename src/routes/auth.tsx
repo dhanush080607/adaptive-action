@@ -103,7 +103,12 @@ function AuthPage() {
           {mode === "signup" && (
             <div className="space-y-1.5">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" />
+              <Input
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                autoComplete="name"
+              />
             </div>
           )}
           <div className="space-y-1.5">
