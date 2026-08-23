@@ -40,7 +40,10 @@ function Insights() {
   const insightsFn = useServerFn(getInsights);
   const resetFn = useServerFn(resetWorkspace);
   const queryClient = useQueryClient();
-  const { data, isLoading } = useQuery({ queryKey: ["insights"], queryFn: () => insightsFn() });
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["insights"],
+    queryFn: () => insightsFn(),
+  });
 
   const reset = useMutation({
     mutationFn: () => resetFn({ data: undefined }),
