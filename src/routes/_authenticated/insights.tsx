@@ -1,8 +1,23 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { getInsights } from "@/lib/lifeos/api.functions";
+import { toast } from "sonner";
+import { Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { getInsights, resetWorkspace } from "@/lib/lifeos/api.functions";
 import { formatDue, formatMinutesLabel } from "@/lib/lifeos/format";
+
 
 export const Route = createFileRoute("/_authenticated/insights")({
   head: () => ({
@@ -23,9 +38,21 @@ export const Route = createFileRoute("/_authenticated/insights")({
 
 function Insights() {
   const insightsFn = useServerFn(getInsights);
+  const resetFn = useServerFn(resetWorkspace);
+  const queryClient = useQueryClient();
   const { data, isLoading } = useQuery({ queryKey: ["insights"], queryFn: () => insightsFn() });
 
+  const reset = useMutation({
+    mutationFn: () => resetFn({ data: undefined }),
+    onSuccess: async () => {
+      toast.success("Workspace reset");
+      await queryClient.invalidateQueries();
+    },
+    onError: (e: Error) => toast.error(e.message || "Could not reset your workspace"),
+  });
+
   if (isLoading || !data) return <div className="panel h-64 animate-pulse" />;
+
 
   const cards = [
     { label: "Completion rate", value: `${data.completion_rate}%` },
@@ -128,6 +155,38 @@ function Insights() {
           </ul>
         </section>
       </div>
+
+      <section className="panel border-destructive/40 p-5">
+        <h2 className="text-lg font-semibold">Danger zone</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Delete every goal, task, deadline, plan and piece of feedback in your workspace. This
+          cannot be undone.
+        </p>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant="destructive" className="mt-4" disabled={reset.isPending}>
+              <Trash2 className="mr-1.5 h-4 w-4" />
+              {reset.isPending ? "Resetting…" : "Reset workspace"}
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Reset your workspace?</AlertDialogTitle>
+              <AlertDialogDescription>
+                Everything LifeOS has learned about your goals, tasks and plans will be permanently
+                deleted. Your account stays intact.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={() => reset.mutate()}>
+                Yes, delete everything
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </section>
     </div>
   );
 }
+

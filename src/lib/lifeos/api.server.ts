@@ -292,12 +292,9 @@ export async function applyExtraction(
         ? new Date(d.due_at).toISOString()
         : resolveDatePhrase(d.due_text || d.title, now);
     if (!due) continue;
-    const { data: dupe } = await sb
-      .from("deadlines")
-      .select("id")
-      .eq("title", d.title)
-      .maybeSingle();
-    if (dupe) continue;
+    const { data: dupes } = await sb.from("deadlines").select("id").eq("title", d.title).limit(1);
+    if (dupes && dupes.length > 0) continue;
+
     await sb.from("deadlines").insert({
       title: d.title,
       due_at: due,
