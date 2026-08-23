@@ -109,4 +109,3 @@ export async function generateStructured<T>(args: {
   if (lastError instanceof AiUnavailableError) throw lastError;
   throw new AiUnavailableError("AI response could not be understood.", "AI_INVALID_JSON");
 }
-

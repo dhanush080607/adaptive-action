@@ -18,7 +18,6 @@ import {
 import { getInsights, resetWorkspace } from "@/lib/lifeos/api.functions";
 import { formatDue, formatMinutesLabel } from "@/lib/lifeos/format";
 
-
 export const Route = createFileRoute("/_authenticated/insights")({
   head: () => ({
     meta: [
@@ -67,8 +66,6 @@ function Insights() {
         </Button>
       </div>
     );
-
-
 
   const cards = [
     { label: "Completion rate", value: `${data.completion_rate}%` },
@@ -205,4 +202,3 @@ function Insights() {
     </div>
   );
 }
-
