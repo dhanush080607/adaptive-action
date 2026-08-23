@@ -38,9 +38,21 @@ export const Route = createFileRoute("/_authenticated/insights")({
 
 function Insights() {
   const insightsFn = useServerFn(getInsights);
+  const resetFn = useServerFn(resetWorkspace);
+  const queryClient = useQueryClient();
   const { data, isLoading } = useQuery({ queryKey: ["insights"], queryFn: () => insightsFn() });
 
+  const reset = useMutation({
+    mutationFn: () => resetFn({ data: undefined }),
+    onSuccess: async () => {
+      toast.success("Workspace reset");
+      await queryClient.invalidateQueries();
+    },
+    onError: (e: Error) => toast.error(e.message || "Could not reset your workspace"),
+  });
+
   if (isLoading || !data) return <div className="panel h-64 animate-pulse" />;
+
 
   const cards = [
     { label: "Completion rate", value: `${data.completion_rate}%` },
