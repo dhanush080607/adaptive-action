@@ -128,6 +128,38 @@ function Insights() {
           </ul>
         </section>
       </div>
+
+      <section className="panel border-destructive/40 p-5">
+        <h2 className="text-lg font-semibold">Danger zone</h2>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Delete every goal, task, deadline, plan and piece of feedback in your workspace. This
+          cannot be undone.
+        </p>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant="destructive" className="mt-4" disabled={reset.isPending}>
+              <Trash2 className="mr-1.5 h-4 w-4" />
+              {reset.isPending ? "Resetting…" : "Reset workspace"}
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Reset your workspace?</AlertDialogTitle>
+              <AlertDialogDescription>
+                Everything LifeOS has learned about your goals, tasks and plans will be permanently
+                deleted. Your account stays intact.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={() => reset.mutate()}>
+                Yes, delete everything
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </section>
     </div>
   );
 }
+
