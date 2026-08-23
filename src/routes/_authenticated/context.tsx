@@ -61,10 +61,11 @@ function ContextReview() {
       }).data ?? null)
     : null;
 
+  const suggestedMinutes = extraction?.available_time?.[0]?.minutes ?? null;
+
   useEffect(() => {
-    const suggested = extraction?.available_time?.[0]?.minutes;
-    if (suggested) setMinutes(String(suggested));
-  }, [extraction?.available_time?.[0]?.minutes]);
+    if (suggestedMinutes) setMinutes(String(suggestedMinutes));
+  }, [suggestedMinutes]);
 
   const confirm = useMutation({
     mutationFn: async () => {

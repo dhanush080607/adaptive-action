@@ -18,7 +18,6 @@ import {
 import { getInsights, resetWorkspace } from "@/lib/lifeos/api.functions";
 import { formatDue, formatMinutesLabel } from "@/lib/lifeos/format";
 
-
 export const Route = createFileRoute("/_authenticated/insights")({
   head: () => ({
     meta: [
@@ -40,7 +39,10 @@ function Insights() {
   const insightsFn = useServerFn(getInsights);
   const resetFn = useServerFn(resetWorkspace);
   const queryClient = useQueryClient();
-  const { data, isLoading } = useQuery({ queryKey: ["insights"], queryFn: () => insightsFn() });
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["insights"],
+    queryFn: () => insightsFn(),
+  });
 
   const reset = useMutation({
     mutationFn: () => resetFn({ data: undefined }),
@@ -51,8 +53,19 @@ function Insights() {
     onError: (e: Error) => toast.error(e.message || "Could not reset your workspace"),
   });
 
-  if (isLoading || !data) return <div className="panel h-64 animate-pulse" />;
-
+  if (isLoading) return <div className="panel h-64 animate-pulse" />;
+  if (!data)
+    return (
+      <div className="panel p-6">
+        <h1 className="text-lg font-semibold">Insights couldn't load</h1>
+        <p className="mt-1 text-sm text-muted-foreground">
+          {error instanceof Error ? error.message : "Something went wrong reading your history."}
+        </p>
+        <Button className="mt-4" variant="secondary" onClick={() => void refetch()}>
+          Try again
+        </Button>
+      </div>
+    );
 
   const cards = [
     { label: "Completion rate", value: `${data.completion_rate}%` },
@@ -189,4 +202,3 @@ function Insights() {
     </div>
   );
 }
-
