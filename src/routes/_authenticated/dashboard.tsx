@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { toast } from "sonner";
-import { CalendarClock, RefreshCw, Target } from "lucide-react";
+import { CalendarClock, RefreshCw, Target, PlusCircle, Activity, ChevronRight, CheckCircle2, Clock, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AmbientBackground, type AmbientState } from "@/components/lifeos/AmbientBackground";
 import { NextActionCard } from "@/components/lifeos/NextActionCard";
@@ -102,26 +102,42 @@ function Dashboard() {
     ["pending", "in_progress", "delayed", "blocked"].includes(t.status),
   );
 
+  const stats = [
+    { label: "Open", value: data?.stats.open ?? 0, icon: Clock, color: "text-primary" },
+    { label: "Completed", value: data?.stats.completed ?? 0, icon: CheckCircle2, color: "text-success" },
+    { label: "Delayed", value: data?.stats.delayed ?? 0, icon: AlertCircle, color: "text-warning" },
+    { label: "Blocked", value: data?.stats.blocked ?? 0, icon: AlertCircle, color: "text-destructive" },
+  ];
+
   return (
     <>
       <AmbientBackground state={aiState} density="subtle" />
 
-      <div className="relative z-10 space-y-8">
-        <header className="flex flex-wrap items-end justify-between gap-4">
+      <div className="relative z-10 space-y-8 fade-in">
+        {/* Header Bar */}
+        <header className="flex flex-wrap items-end justify-between gap-4 border-b border-border/40 pb-5">
           <div>
-            <p className="label-caps">{greeting()}</p>
-            <h1 className="mt-1 text-3xl font-semibold">
-              {data?.profile?.name ? `Ready, ${data.profile.name}?` : "Your action center"}
+            <span className="label-caps">{greeting()}</span>
+            <h1 className="mt-1 text-3xl font-semibold text-gradient tracking-tight">
+              {data?.profile?.name ? `Ready, ${data.profile.name}?` : "Your Action Center"}
             </h1>
           </div>
-          <div className="flex gap-2">
-            <Button variant="secondary" asChild>
-              <Link to="/capture">Capture information</Link>
+          <div className="flex items-center gap-3">
+            <Button
+              variant="secondary"
+              asChild
+              className="border border-border/60 bg-surface hover:bg-surface-elevated hover:border-primary/40 transition-all shadow-sm"
+            >
+              <Link to="/capture" className="flex items-center gap-2">
+                <PlusCircle className="h-4 w-4 text-primary" />
+                <span>Capture Task</span>
+              </Link>
             </Button>
             <Button
               variant="outline"
               onClick={() => replanMutation.mutate()}
               disabled={replanMutation.isPending}
+              className="border-primary/30 bg-primary/5 hover:bg-primary/10 text-primary transition-all shadow-glow-cyan/20"
             >
               <RefreshCw
                 className={`mr-1.5 h-4 w-4 ${replanMutation.isPending ? "animate-spin" : ""}`}
@@ -131,8 +147,9 @@ function Dashboard() {
           </div>
         </header>
 
+        {/* Hero Next Action Section */}
         {isLoading ? (
-          <div className="panel h-52 animate-pulse" />
+          <div className="panel h-56 animate-pulse bg-surface/50 border-border/40 rounded-2xl" />
         ) : (
           <NextActionCard
             action={next}
@@ -142,54 +159,78 @@ function Dashboard() {
           />
         )}
 
+        {/* Dynamic Grid Layout */}
         <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-          <section className="panel p-5 sm:p-6">
-            <div className="flex items-center justify-between">
-              <h2 className="flex items-center gap-2 text-lg font-semibold">
-                <CalendarClock className="h-4 w-4 text-primary" /> Today's plan
+          {/* Main Column: Plan Timeline */}
+          <section className="panel panel-hover p-6 rounded-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-border/30 pb-3">
+              <h2 className="flex items-center gap-2 text-base font-medium tracking-tight text-foreground">
+                <CalendarClock className="h-4.5 w-4.5 text-primary" /> Today's Focus Schedule
               </h2>
-              <Link to="/plan" className="text-xs text-primary hover:underline">
-                Full plan
+              <Link
+                to="/plan"
+                className="group flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+              >
+                <span>Full Timeline</span>
+                <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </div>
-            <div className="mt-4">
+            <div className="pt-2">
               <PlanTimeline items={items} highlightTaskId={next?.task_id ?? null} />
             </div>
           </section>
 
+          {/* Side Column: Telemetry & Priority Queue */}
           <div className="space-y-6">
-            <section className="panel p-5 sm:p-6">
-              <h2 className="text-lg font-semibold">Signals</h2>
+            {/* System Signals Telemetry */}
+            <section className="panel panel-hover p-6 rounded-2xl">
+              <div className="flex items-center gap-2 text-base font-medium border-b border-border/30 pb-3">
+                <Activity className="h-4.5 w-4.5 text-primary" /> Signals
+              </div>
               <dl className="mt-4 grid grid-cols-2 gap-3">
-                {[
-                  { label: "Open", value: data?.stats.open ?? 0 },
-                  { label: "Completed", value: data?.stats.completed ?? 0 },
-                  { label: "Delayed", value: data?.stats.delayed ?? 0 },
-                  { label: "Blocked", value: data?.stats.blocked ?? 0 },
-                ].map((s) => (
-                  <div key={s.label} className="rounded-lg border border-border/60 p-3">
-                    <dt className="label-caps">{s.label}</dt>
-                    <dd className="mt-1 font-mono text-2xl">{s.value}</dd>
-                  </div>
-                ))}
+                {stats.map((s) => {
+                  const Icon = s.icon;
+                  return (
+                    <div
+                      key={s.label}
+                      className="rounded-xl border border-border/50 bg-background/40 p-3.5 backdrop-blur-md transition-all hover:border-border"
+                    >
+                      <dt className="flex items-center justify-between label-caps text-xs">
+                        <span>{s.label}</span>
+                        <Icon className={`h-3.5 w-3.5 ${s.color}`} />
+                      </dt>
+                      <dd className="mt-2 font-mono text-2xl font-semibold tracking-tight text-foreground">
+                        {s.value}
+                      </dd>
+                    </div>
+                  );
+                })}
               </dl>
             </section>
 
-            <section className="panel p-5 sm:p-6">
-              <h2 className="flex items-center gap-2 text-lg font-semibold">
-                <Target className="h-4 w-4 text-primary" /> Priority queue
-              </h2>
-              <ul className="mt-4 space-y-2">
+            {/* Priority Queue */}
+            <section className="panel panel-hover p-6 rounded-2xl">
+              <div className="flex items-center justify-between border-b border-border/30 pb-3">
+                <h2 className="flex items-center gap-2 text-base font-medium text-foreground">
+                  <Target className="h-4.5 w-4.5 text-primary" /> Priority Queue
+                </h2>
+                <span className="font-mono text-xs text-muted-foreground">
+                  {openTasks.length} pending
+                </span>
+              </div>
+              <ul className="mt-4 space-y-2.5">
                 {openTasks.slice(0, 6).map((t) => (
                   <li key={t.id}>
                     <Link
                       to="/tasks/$id"
                       params={{ id: t.id }}
-                      className="flex items-center gap-3 rounded-lg border border-border/60 p-3 transition-colors hover:border-primary/50"
+                      className="group flex items-center justify-between gap-3 rounded-xl border border-border/50 bg-background/30 p-3 transition-all hover:border-primary/40 hover:bg-surface-elevated/60"
                     >
-                      <span className="min-w-0 flex-1">
-                        <span className="block truncate text-sm font-medium">{t.title}</span>
-                        <span className="block text-xs text-muted-foreground">
+                      <span className="min-w-0 flex-1 space-y-0.5">
+                        <span className="block truncate text-sm font-medium text-foreground/90 group-hover:text-primary transition-colors">
+                          {t.title}
+                        </span>
+                        <span className="block text-xs font-mono text-muted-foreground">
                           {STATUS_LABELS[t.status] ?? t.status} ·{" "}
                           {formatMinutesLabel(t.estimated_minutes)} · {formatDue(t.deadline)}
                         </span>
@@ -199,8 +240,8 @@ function Dashboard() {
                   </li>
                 ))}
                 {openTasks.length === 0 && (
-                  <li className="text-sm text-muted-foreground">
-                    Nothing open. Capture new information to fill your queue.
+                  <li className="py-6 text-center text-xs text-muted-foreground border border-dashed border-border/40 rounded-xl">
+                    Queue clear. Capture new information to populate your workflow.
                   </li>
                 )}
               </ul>
