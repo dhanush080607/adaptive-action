@@ -5,15 +5,9 @@
 </p>
 
 <p align="center">
-  <a href="#">
-    <img src="https://img.shields.io/badge/⚡_AI_ACTION_SYSTEM-1c1917?style=for-the-badge&logoColor=fbbf24" alt="AI Action System"/>
-  </a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/🧠_GEMINI_AI-4c0519?style=for-the-badge&logoColor=fde68a" alt="Gemini AI"/>
-  </a>
-  <a href="#">
-    <img src="https://img.shields.io/badge/🚀_HACKATHON-9a3412?style=for-the-badge&logoColor=white" alt="Hackathon"/>
-  </a>
+  <img src="https://img.shields.io/badge/⚡_AI_ACTION_SYSTEM-1c1917?style=for-the-badge&logoColor=fbbf24" alt="AI Action System"/>
+  <img src="https://img.shields.io/badge/🧠_GEMINI_AI-4c0519?style=for-the-badge&logoColor=fde68a" alt="Gemini AI"/>
+  <img src="https://img.shields.io/badge/🚀_AI_BUILDERS_HACKATHON-9a3412?style=for-the-badge&logoColor=white" alt="Hackathon"/>
 </p>
 
 <p align="center">
@@ -24,169 +18,150 @@
   <strong>Give LifeOS your messy information. It tells you what matters and what to do next.</strong>
 </p>
 
+<p align="center">
+  <a href="https://adaptive-action.vercel.app/">🌐 Live Demo</a>
+  •
+  <a href="#-how-lifeos-works">How It Works</a>
+  •
+  <a href="#-roadmap">Roadmap</a>
+</p>
+
 ---
 
 # 🌌 What Is LifeOS?
 
-**LifeOS** is an AI-powered personal action system designed to transform scattered information into clear, prioritized and executable actions.
+**LifeOS** is an AI-powered personal action system that transforms messy, unstructured information into clear priorities, realistic plans, and a **single next action**.
 
-People have information everywhere:
-
-- Notes
-- Tasks
-- Documents
-- Deadlines
-- Goals
-- Ideas
-- Study material
-- Work requirements
-
-The problem is not collecting information.
-
-The real problem is:
-
-> **What actually matters, what should I do next, and what happens when my plan changes?**
-
-LifeOS is designed to solve that problem.
-
----
-
-# ⚡ The Core Idea
-
-Most productivity tools answer:
+Most productivity tools help users answer:
 
 > **"What do I have to do?"**
 
-LifeOS focuses on:
+LifeOS focuses on a different question:
 
 > **"What should I do next?"**
 
-The product continuously moves through:
+The difference is important.
 
-```text
-INFORMATION
-     ↓
-UNDERSTAND
-     ↓
-PRIORITIZE
-     ↓
-PLAN
-     ↓
-ACT
-     ↓
-FEEDBACK
-     ↓
-REPLAN
-     ↓
-NEXT ACTION
-```
+People already have information everywhere:
 
-This creates a continuous decision-making loop instead of another static task list.
+* Notes
+* Assignments
+* Deadlines
+* Goals
+* Study material
+* Projects
+* Ideas
+* Tasks
+* Work requirements
+
+The difficult part is deciding:
+
+* What matters most?
+* What should I start with?
+* How much time should I spend on it?
+* Can everything fit into the available time?
+* What happens if my plan changes?
+
+LifeOS is designed to act as a **decision layer between information and action**.
 
 ---
 
 # 🎯 The Problem
 
-Modern users are overloaded with information.
+Information overload is rarely caused by a lack of productivity tools.
 
-A typical day can contain:
+The real problem is **decision overload**.
+
+A typical user might have:
 
 ```text
-Exam
-Assignment
-Meeting
+ML Exam
+Web Assignment
 Project
+Meeting
 Deadline
+Study Material
 Ideas
-Emails
-Notes
 Personal Goals
 ```
 
-The user still has to manually answer:
+A traditional task manager can store all of these.
 
-- What is urgent?
-- What is important?
-- What should I work on first?
-- How much time will it take?
-- Can everything fit today?
-- What happens if I miss something?
-
-Traditional productivity applications usually organize information.
-
-**LifeOS attempts to turn that information into decisions and actions.**
-
----
-
-# 💡 LifeOS Solution
+But the user still has to decide:
 
 ```text
-              SCATTERED INFORMATION
-                       │
-                       ▼
-              ┌─────────────────┐
-              │  AI CONTEXT     │
-              │  UNDERSTANDING  │
-              └────────┬────────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │ PRIORITY ENGINE │
-              └────────┬────────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │  AI PLANNER     │
-              └────────┬────────┘
-                       │
-                       ▼
-              ┌─────────────────┐
-              │  NEXT ACTION    │
-              └────────┬────────┘
-                       │
-                       ▼
-                     USER
-                       │
-                       ▼
-                  FEEDBACK
-                       │
-                       ▼
-                  REPLANNING
-                       │
-                       └──────────────► NEW PLAN
+What first?
+      ↓
+Why this task?
+      ↓
+How long?
+      ↓
+Can it fit today?
+      ↓
+What if something takes longer?
 ```
+
+That repeated decision-making creates friction.
+
+### LifeOS focuses on reducing that friction.
 
 ---
 
-# 🧠 Core Product Workflow
+# ⚡ The Core Idea
 
-LifeOS is built around one continuous loop:
+LifeOS transforms:
 
-```mermaid
-flowchart LR
-    A[Capture] --> B[Understand]
-    B --> C[Prioritize]
-    C --> D[Plan]
-    D --> E[Next Action]
-    E --> F[User Feedback]
-    F --> G[Evaluate]
-    G --> H[Replan]
-    H --> E
+```text
+MESSY INFORMATION
+        ↓
+UNDERSTAND
+        ↓
+PRIORITIZE
+        ↓
+PLAN
+        ↓
+NEXT ACTION
+        ↓
+ACT
+        ↓
+ADAPT
 ```
 
-The important part is the final loop.
+The system is designed around a continuous action loop rather than a static list of tasks.
 
-LifeOS does not stop after generating a plan.
+```text
+Information
+     ↓
+Context
+     ↓
+Priority
+     ↓
+Plan
+     ↓
+Next Action
+     ↓
+User Action
+     ↓
+New Reality
+     ↓
+Replanning
+     ↓
+New Next Action
+```
 
-**The plan can change when reality changes.**
+The final step is what makes LifeOS different.
+
+**The plan is not treated as permanent.**
 
 ---
 
-# ✨ Core Features
+# 🧠 How LifeOS Works
 
-## 🧠 01 — AI Context Understanding
+## 01 — Capture
 
-Users can provide unstructured information such as:
+The user provides information in natural language.
+
+Example:
 
 ```text
 I have an ML exam Friday.
@@ -200,7 +175,15 @@ and it is 60% complete.
 I have 3 hours tonight.
 ```
 
-LifeOS converts this into structured context.
+The user does not need to manually create a complicated task structure first.
+
+---
+
+## 02 — Understand
+
+LifeOS analyzes the information and identifies useful context.
+
+For example:
 
 ```text
 GOAL
@@ -212,45 +195,58 @@ Study Linear Regression
 Study Candidate Elimination
 Complete Web Assignment
 
-DEADLINE
+DEADLINES
 Web Assignment → Tomorrow
 ML Exam → Friday
 
+PROGRESS
+Web Assignment → 60% complete
+
 AVAILABLE TIME
 3 Hours
-
-PROGRESS
-Assignment → 60% complete
 ```
 
----
-
-# 🎯 02 — Intelligent Prioritization
-
-LifeOS evaluates tasks using multiple signals:
-
-- Deadline
-- Urgency
-- Importance
-- Estimated effort
-- Current progress
-- Dependencies
-- Available time
-- Goal alignment
-
-Instead of simply sorting tasks alphabetically or by creation date, LifeOS calculates what deserves attention first.
+The purpose of this stage is to turn unstructured information into actionable context.
 
 ---
 
-# ⚡ 03 — Next Best Action
+# 🎯 03 — Prioritize
 
-This is the heart of LifeOS.
+LifeOS evaluates tasks using multiple signals.
 
-The user should never have to stare at a huge task list and ask:
+These can include:
 
-> "Where do I start?"
+* Deadline proximity
+* Urgency
+* Importance
+* Estimated effort
+* Current progress
+* Dependencies
+* Available time
+* Goal alignment
 
-LifeOS provides one recommended action.
+Instead of simply sorting tasks by creation date, LifeOS attempts to determine which task deserves attention **right now**.
+
+Example:
+
+```text
+1. Complete Web Assignment
+2. Study Naive Bayes
+3. Study Linear Regression
+4. Study Candidate Elimination
+```
+
+The exact priority depends on the context provided by the user.
+
+---
+
+# ⚡ 04 — Next Best Action
+
+The central idea of LifeOS is the **Next Action**.
+
+Instead of presenting the user with another overwhelming task list, LifeOS identifies the action that should happen next.
+
+Example:
 
 ```text
 ┌──────────────────────────────────────┐
@@ -266,7 +262,7 @@ LifeOS provides one recommended action.
 │      • Deadline is tomorrow          │
 │      • Already 60% complete          │
 │      • High urgency                  │
-│      • Finishing it removes          │
+│      • Completing it reduces         │
 │        immediate deadline pressure   │
 │                                      │
 │             [ START ]                │
@@ -275,13 +271,13 @@ LifeOS provides one recommended action.
 
 The objective is simple:
 
-> **Reduce decision fatigue.**
+> **Reduce decision fatigue and help the user start.**
 
 ---
 
-# 📅 04 — AI Action Planner
+# 📅 05 — Action Planning
 
-LifeOS converts priorities into a realistic plan.
+Once priorities are identified, LifeOS can turn them into an executable plan.
 
 Example:
 
@@ -309,186 +305,175 @@ Review
 30 min
 ```
 
-The planner considers:
+Planning considers factors such as:
 
-- Available time
-- Task duration
-- Deadlines
-- Priority
-- Dependencies
-- Current progress
-- Breaks
+* Available time
+* Task duration
+* Deadlines
+* Priority
+* Dependencies
+* Existing progress
+* Breaks
 
-The objective is not to create a perfect-looking schedule.
+The objective is not to create the most impressive-looking calendar.
 
-The objective is to create a **realistic executable plan**.
+The objective is to create a plan that can realistically be executed.
 
 ---
 
-# 🔄 05 — Adaptive Replanning
+# 🔄 06 — Adaptive Replanning
 
-Plans rarely go exactly as expected.
+Real life does not follow perfect schedules.
 
 Suppose the original plan is:
 
 ```text
-Monday
-
 Chapter 1
 Chapter 2
 Assignment
 ```
 
-But the user completes only:
+But the user spends longer than expected on the assignment.
+
+LifeOS can respond to the changed situation.
 
 ```text
-Chapter 1
-```
-
-LifeOS can evaluate the new situation.
-
-```text
-Missed / Delayed Work
-        ↓
-Check Remaining Tasks
-        ↓
-Check Deadlines
-        ↓
+Changed Reality
+       ↓
+Remaining Work
+       ↓
+Deadlines
+       ↓
 Recalculate Priorities
-        ↓
-Update Schedule
-        ↓
+       ↓
+Adjust Plan
+       ↓
 Generate New Next Action
 ```
 
-Example:
+For example:
 
-> Your assignment deadline is closer than Chapter 2, so LifeOS has moved Chapter 2 and prioritized the assignment.
+> The assignment is now taking longer than expected, so lower-priority study work can be moved while protecting the closer deadline.
 
-This turns LifeOS from a static planner into an **adaptive action system**.
-
----
-
-# 📊 06 — Progress Tracking
-
-LifeOS tracks:
-
-- Completed tasks
-- Delayed tasks
-- Missed tasks
-- Partially completed tasks
-- Goal progress
-- Planning performance
-- User feedback
-
-The system can use this information when generating future plans.
+This is the core adaptive behavior LifeOS is designed to demonstrate.
 
 ---
 
-# 🔍 07 — Explainable AI Decisions
+# 💡 Why LifeOS Is Different
 
-LifeOS should never simply say:
-
-> "Do this."
-
-It should explain:
-
-> **"Why this?"**
-
-Example:
+LifeOS is not intended to be:
 
 ```text
-WHY THIS TASK?
-
-1. Closest deadline
-2. High importance
-3. Small remaining effort
-4. Blocking another objective
-5. Fits your available time
+Another To-Do List
+Another Notes App
+Another Calendar
+Another Chatbot
 ```
 
-The goal is to make AI decisions understandable rather than mysterious.
+Instead:
+
+```text
+Information
+     ↓
+Decision
+     ↓
+Action
+     ↓
+Adaptation
+```
+
+The product focuses on helping users move from **knowing** to **doing**.
 
 ---
 
-# 📝 Example End-to-End Journey
+# 🧪 Example End-to-End Scenario
 
-### Step 1 — User Captures Information
+### User Input
 
 ```text
-Exam Friday.
-Assignment tomorrow.
-Assignment 60% complete.
-3 hours available tonight.
+I have an ML exam Friday.
+
+My web assignment is due tomorrow
+and is 60% complete.
+
+I have 3 hours tonight.
+
+I still need to study:
+- Naive Bayes
+- Linear Regression
+- Candidate Elimination
 ```
 
-### Step 2 — LifeOS Understands
+### LifeOS Understands
 
 ```text
-Goal:
-Prepare for exam
-
-Urgent Task:
-Complete assignment
-
-Available:
-3 hours
+Exam → Friday
+Assignment → Tomorrow
+Assignment Progress → 60%
+Available Time → 3 hours
 ```
 
-### Step 3 — LifeOS Prioritizes
+### LifeOS Prioritizes
 
 ```text
-1. Complete Assignment
-2. Study Naive Bayes
-3. Study Linear Regression
-4. Study Candidate Elimination
+HIGH
+Complete Web Assignment
+
+MEDIUM
+Study Naive Bayes
+
+MEDIUM
+Study Linear Regression
+
+MEDIUM
+Study Candidate Elimination
 ```
 
-### Step 4 — LifeOS Plans
+### LifeOS Plans
 
 ```text
-Assignment → 45 min
+Complete Assignment → 90 min
 Naive Bayes → 45 min
 Practice → 30 min
-Review → 30 min
+Review → 15 min
 ```
 
-### Step 5 — LifeOS Recommends
+### LifeOS Recommends
 
 ```text
 NEXT ACTION
 
-Complete the assignment.
+Complete the Web Assignment.
 ```
 
-### Step 6 — Reality Changes
+### Reality Changes
+
+The assignment takes longer than expected.
 
 ```text
-Assignment takes 90 minutes
-instead of 45.
+Expected → 45 minutes
+Actual → 90 minutes
 ```
 
-### Step 7 — LifeOS Replans
+### LifeOS Adapts
 
 ```text
-Recalculate workload
-        ↓
-Protect deadline
-        ↓
+Recalculate remaining workload
+          ↓
+Protect closest deadline
+          ↓
 Move lower-priority work
-        ↓
-Generate updated plan
+          ↓
+Update plan
+          ↓
+Generate new Next Action
 ```
 
-### Step 8 — New Next Action
-
-```text
-Continue studying Naive Bayes.
-```
+This is the behavior LifeOS is designed to showcase.
 
 ---
 
-# 🏗️ AI Architecture
+# 🏗️ System Architecture
 
 ```mermaid
 flowchart TB
@@ -496,245 +481,205 @@ flowchart TB
 
     F --> API[FastAPI API]
 
-    API --> C[Context Engine]
-    API --> P[Priority Engine]
-    API --> PL[Planning Engine]
-    API --> E[Evaluation Engine]
-    API --> R[Replanning Engine]
+    API --> C[Context Processing]
+    API --> P[Priority Logic]
+    API --> PL[Planning Logic]
+    API --> R[Replanning Logic]
 
-    C --> AI[Gemini AI]
+    C --> AI[Google Gemini]
     P --> AI
     PL --> AI
-    E --> AI
     R --> AI
 
-    C --> DB[(PostgreSQL)]
-    P --> DB
-    PL --> DB
-    E --> DB
-    R --> DB
+    API --> STATE[Application State]
+```
+
+The architecture is intentionally centered around the action pipeline:
+
+```text
+Context
+   ↓
+Priority
+   ↓
+Planning
+   ↓
+Action
+   ↓
+Replanning
 ```
 
 ---
 
-# 🤖 AI Components
+# 🤖 AI Role
 
-## Context Engine
+Gemini is used where language understanding and reasoning provide meaningful value.
 
-Responsible for:
+### AI can help with:
 
-- Information extraction
-- Task detection
-- Goal detection
-- Deadline detection
-- Relationship detection
-- Context structuring
+* Understanding natural-language context
+* Extracting tasks
+* Detecting goals
+* Identifying deadlines
+* Interpreting progress
+* Generating explanations
+* Supporting action recommendations
 
----
+The application should not use AI simply because an AI API is available.
 
-## Priority Engine
-
-Responsible for:
-
-- Deadline analysis
-- Urgency
-- Importance
-- Effort
-- Dependencies
-- Progress
-- Goal alignment
+The AI must contribute to the actual decision-making workflow.
 
 ---
 
-## Planning Engine
+# ⚙️ Deterministic Decision Logic
 
-Responsible for:
+Not every decision needs an LLM.
 
-- Time allocation
-- Scheduling
-- Task ordering
-- Breaks
-- Available capacity
-- Daily planning
+LifeOS can combine AI understanding with deterministic application logic.
 
----
+For example:
 
-## Evaluation Engine
+```text
+AI
+ ↓
+Extract structured context
+ ↓
+Deterministic priority signals
+ ↓
+Planning constraints
+ ↓
+Action recommendation
+```
 
-Responsible for:
-
-- Completion analysis
-- Missed task detection
-- Delay detection
-- User feedback
-- Plan effectiveness
-
----
-
-## Replanning Engine
-
-Responsible for:
-
-- Recalculating priorities
-- Updating schedules
-- Moving tasks
-- Protecting deadlines
-- Generating new actions
+This hybrid approach makes the system more predictable and easier to explain.
 
 ---
 
-# 🛠️ Technology Stack
+# 🔍 Explainable Decisions
 
-| Layer | Technology |
-| --- | --- |
-| Frontend | React |
-| Language | TypeScript |
-| Build Tool | Vite |
-| Styling | Tailwind CSS |
-| UI | shadcn/ui |
-| Backend | Python |
-| API | FastAPI |
-| ORM | SQLAlchemy |
-| Database | PostgreSQL |
-| AI | Google Gemini |
-| Animation | Framer Motion |
-| 3D Visuals | Three.js |
-| Version Control | Git + GitHub |
+LifeOS should not simply tell the user:
+
+> **"Do this."**
+
+It should also answer:
+
+> **"Why this?"**
+
+Example:
+
+```text
+WHY THIS ACTION?
+
+✓ Closest deadline
+✓ High urgency
+✓ Already partially completed
+✓ Fits available time
+✓ Reduces immediate deadline pressure
+```
+
+Explainability is an important part of the product experience.
 
 ---
 
 # 🎨 Product Design
 
-LifeOS uses a completely different visual direction from traditional productivity applications.
+LifeOS uses a premium dark interface designed around focus and action.
 
-### Design Language
+### Current Visual Direction
 
 ```text
 MIDNIGHT BACKGROUND
         +
-ELECTRIC BLUE
+WARM AMBER
         +
-CYAN ACCENTS
+ORANGE HIGHLIGHTS
         +
-VIOLET HIGHLIGHTS
-        +
-GLASS PANELS
+BURGUNDY / DEEP RED
         +
 SOFT GLOW
         +
-MICRO INTERACTIONS
+GLASS-LIKE SURFACES
+        +
+SUBTLE MOTION
 ```
 
-### UI Principles
+The visual language intentionally moves away from conventional productivity dashboards.
 
-- Minimal decision-making
-- Strong visual hierarchy
-- Dark futuristic interface
-- Focus-oriented dashboards
-- Clear priority indicators
-- Smooth transitions
-- Responsive design
-- Subtle animated backgrounds
-
-Animations should enhance the experience rather than distract from the user's work.
+The interface should feel like an **AI decision system**, not a spreadsheet.
 
 ---
 
-# 🌌 Visual Experience
+# 🖥️ User Experience Principles
 
-The interface can use:
+LifeOS follows several UI principles:
 
-- Animated gradient backgrounds
-- Subtle particle fields
-- Three.js ambient scenes
-- Framer Motion transitions
-- Glowing priority indicators
-- Animated progress bars
-- Smooth page transitions
-- Focus-mode animations
+### 1. One Clear Decision
 
-The visual system should remain lightweight and accessible.
+The user should quickly understand:
+
+> **What should I do now?**
+
+### 2. Strong Hierarchy
+
+Important information should visually dominate secondary information.
+
+### 3. Explain AI Decisions
+
+Recommendations should have understandable reasoning.
+
+### 4. Reduce Cognitive Load
+
+The interface should not make users manage unnecessary configuration.
+
+### 5. Action Over Information
+
+Every major screen should move the user closer to completing something.
+
+### 6. Adapt Instead of Blame
+
+When plans fail, LifeOS should update the plan instead of treating the missed task as the end of the workflow.
 
 ---
 
-# 🖥️ Application Pages
+# 🌐 Current Application
 
-## Landing Page
+**Live Demo:**
 
-Introduces the core idea:
+https://adaptive-action.vercel.app/
 
-> **Turn information into action.**
-
-Primary CTA:
+The deployed application currently focuses on communicating the core LifeOS concept:
 
 ```text
-START WITH LIFEOS
+AI Action System
+        ↓
+Information
+        ↓
+Decision
+        ↓
+Next Action
+        ↓
+Adaptive Replanning
 ```
 
----
-
-## Dashboard
-
-Displays:
-
-- Current goal
-- Next Best Action
-- Today's priorities
-- Progress
-- Upcoming deadlines
-- Available time
+The MVP is intentionally focused rather than attempting to implement every possible productivity feature.
 
 ---
 
-## Capture
+# 🛠️ Technology Stack
 
-Users can enter:
+| Layer           | Technology    |
+| --------------- | ------------- |
+| Frontend        | React         |
+| Language        | TypeScript    |
+| Build Tool      | Vite          |
+| Styling         | Tailwind CSS  |
+| UI Components   | shadcn/ui     |
+| Backend         | Python        |
+| API             | FastAPI       |
+| AI              | Google Gemini |
+| Version Control | Git + GitHub  |
+| Deployment      | Vercel        |
 
-- Notes
-- Tasks
-- Goals
-- Deadlines
-- Unstructured information
-
----
-
-## Action Plan
-
-Displays:
-
-- Timeline
-- Priority
-- Duration
-- Deadline
-- Dependencies
-- AI reasoning
-
----
-
-## Task Detail
-
-Displays:
-
-- Task name
-- Why it matters
-- Estimated effort
-- Deadline
-- Progress
-- Related information
-- Completion status
-
----
-
-## Insights
-
-Displays:
-
-- Completion rate
-- Delayed work
-- Goal progress
-- Time allocation
-- Planning performance
-- AI recommendations
+> The stack may evolve as the application develops.
 
 ---
 
@@ -768,22 +713,21 @@ lifeos/
 │
 ├── .env.example
 ├── .gitignore
-├── README.md
-└── ...
+└── README.md
 ```
 
 ---
 
 # ⚙️ Run Locally
 
-## 1. Clone
+## Clone the Repository
 
 ```bash
 git clone YOUR_REPOSITORY_URL
 cd lifeos
 ```
 
-## 2. Frontend
+## Start the Frontend
 
 ```bash
 cd frontend
@@ -791,7 +735,7 @@ npm install
 npm run dev
 ```
 
-## 3. Backend
+## Start the Backend
 
 Open another terminal:
 
@@ -799,8 +743,6 @@ Open another terminal:
 cd backend
 python -m venv venv
 ```
-
-Activate the environment.
 
 ### Windows
 
@@ -814,7 +756,7 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Start the API:
+Start FastAPI:
 
 ```bash
 uvicorn app.main:app --reload
@@ -824,22 +766,25 @@ uvicorn app.main:app --reload
 
 # 🔐 Environment Variables
 
-Create a `.env` file.
+Create a `.env` file in the backend.
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key
 DATABASE_URL=your_database_url
+FRONTEND_URL=your_frontend_url
 ```
 
-Never commit secrets to GitHub.
+Never commit API keys or other secrets to GitHub.
 
-Use `.env.example` for public configuration documentation.
+Use `.env.example` to document required configuration.
 
 ---
 
 # 🔌 API
 
-Initial API structure:
+The application API is evolving alongside the MVP.
+
+Current/planned endpoint structure includes:
 
 ```text
 POST   /context
@@ -857,148 +802,143 @@ POST   /replan
 GET    /dashboard
 ```
 
-The API may evolve as the product develops.
+Endpoints should only be considered production-ready when implemented and tested in the deployed system.
 
 ---
 
-# 🔄 Application Workflow
+# 🧪 Testing Strategy
+
+The core workflow should be tested against:
 
 ```text
-01  Capture Information
-        ↓
-02  Extract Context
-        ↓
-03  Identify Tasks
-        ↓
-04  Identify Goals
-        ↓
-05  Detect Deadlines
-        ↓
-06  Calculate Priorities
-        ↓
-07  Generate Plan
-        ↓
-08  Recommend Next Action
-        ↓
-09  Track Progress
-        ↓
-10  Collect Feedback
-        ↓
-11  Recalculate
-        ↓
-12  Replan
-```
-
----
-
-# 🧪 Testing
-
-The application should be tested against:
-
-```text
-[ ] Context extraction
+[ ] Natural-language context
 [ ] Task extraction
 [ ] Goal extraction
 [ ] Deadline detection
 [ ] Priority calculation
-[ ] Planning
-[ ] Next action generation
+[ ] Time-aware planning
+[ ] Next Action generation
 [ ] Task completion
-[ ] Task delay
+[ ] Delayed tasks
 [ ] Replanning
 [ ] Invalid input
 [ ] AI failure
 [ ] Large input
-[ ] Mobile layout
 [ ] API errors
+[ ] Responsive layout
+[ ] Mobile layout
+```
+
+Special attention should be given to the adaptive workflow:
+
+```text
+PLAN
+ ↓
+ACTION
+ ↓
+CHANGE
+ ↓
+REPLAN
+ ↓
+NEW ACTION
 ```
 
 ---
 
 # 🛣️ Roadmap
 
-<details>
-<summary>🟢 Phase 1 — Product Foundation</summary>
+## 🟢 Phase 1 — Product Foundation
 
-- [x] Product concept
-- [x] Problem definition
-- [x] Core workflow
-- [x] MVP definition
-- [x] Technical architecture
-- [ ] Final MVP specification
+* [x] Product concept
+* [x] Problem definition
+* [x] Core workflow
+* [x] MVP direction
+* [x] Technical architecture
+* [x] Initial product UI
+* [x] Public deployment
 
-</details>
+---
 
-<details>
-<summary>🔵 Phase 2 — Application Foundation</summary>
+## 🔵 Phase 2 — Core Application
 
-- [ ] React frontend
-- [ ] FastAPI backend
-- [ ] Database
-- [ ] API structure
-- [ ] Authentication
-- [ ] Basic dashboard
+* [x] React frontend foundation
+* [x] FastAPI backend foundation
+* [x] Context analysis workflow
+* [x] Action-oriented dashboard
+* [x] Planning workflow
+* [ ] Authentication
+* [ ] Persistent user accounts
+* [ ] Production database integration
 
-</details>
+---
 
-<details>
-<summary>🧠 Phase 3 — AI Context Engine</summary>
+## 🧠 Phase 3 — AI Context Intelligence
 
-- [ ] Gemini integration
-- [ ] Structured AI output
-- [ ] Context extraction
-- [ ] Task extraction
-- [ ] Goal extraction
-- [ ] Deadline extraction
+* [x] Gemini integration
+* [x] Structured AI responses
+* [x] Context understanding
+* [x] Task extraction
+* [x] Goal extraction
+* [x] Deadline extraction
+* [ ] Rich document understanding
+* [ ] Multi-source context
 
-</details>
+---
 
-<details>
-<summary>⚡ Phase 4 — Action Intelligence</summary>
+## ⚡ Phase 4 — Action Intelligence
 
-- [ ] Priority engine
-- [ ] Planning engine
-- [ ] Next Best Action
-- [ ] AI explanations
-- [ ] Time-aware planning
+* [x] Priority reasoning
+* [x] Next Best Action
+* [x] Time-aware planning
+* [x] Explainable recommendations
+* [ ] More advanced dependency reasoning
+* [ ] Improved effort estimation
+* [ ] Personalized prioritization
 
-</details>
+---
 
-<details>
-<summary>🔄 Phase 5 — Adaptive Intelligence</summary>
+## 🔄 Phase 5 — Adaptive Intelligence
 
-- [ ] Task completion
-- [ ] Feedback
-- [ ] Missed task detection
-- [ ] Evaluation
-- [ ] Adaptive replanning
-- [ ] Updated Next Action
+* [x] Task completion workflow
+* [x] Plan updates
+* [ ] Rich user feedback
+* [ ] Missed-task detection
+* [ ] Plan effectiveness evaluation
+* [ ] Automated adaptive replanning
+* [ ] Personalized planning behavior
 
-</details>
+---
 
-<details>
-<summary>🏆 Phase 6 — Killer Demo</summary>
+## 🏆 Phase 6 — Hackathon Demo
 
-- [ ] Complete end-to-end workflow
-- [ ] Real-world testing
-- [ ] Student scenario
-- [ ] Developer scenario
-- [ ] Missed-task demonstration
-- [ ] Automatic replanning demonstration
+* [x] End-to-end product concept
+* [x] Student scenario
+* [x] Next Action demonstration
+* [ ] Complete adaptive replanning demonstration
+* [ ] Real-world testing
+* [ ] Demo recording
+* [ ] Final presentation
+* [ ] Final submission
 
-</details>
+---
 
-<details>
-<summary>🚀 Phase 7 — Production</summary>
+## 🚀 Phase 7 — Future Product
 
-- [ ] Production database
-- [ ] Backend deployment
-- [ ] Frontend deployment
-- [ ] Security review
-- [ ] Performance optimization
-- [ ] Final public URL
+Potential future capabilities:
 
-</details>
+```text
+Google Calendar
+Gmail
+Google Drive
+GitHub
+Notion
+Slack
+Voice Input
+Browser Extension
+Mobile Application
+```
+
+These integrations are **future scope** and are not required for the core MVP.
 
 ---
 
@@ -1006,73 +946,137 @@ The application should be tested against:
 
 LifeOS is being developed for the **AI Builders Hackathon 2026**.
 
-The project focuses on demonstrating that AI can move beyond simple text generation.
+The project demonstrates a different approach to AI applications.
 
-The goal is:
+Instead of:
 
 ```text
-AI
+USER
  ↓
-UNDERSTAND
+QUESTION
  ↓
-REASON
- ↓
-DECIDE
- ↓
-ACT
- ↓
-LEARN
- ↓
-ADAPT
+AI ANSWER
 ```
+
+LifeOS aims for:
+
+```text
+USER
+ ↓
+MESSY INFORMATION
+ ↓
+AI UNDERSTANDS
+ ↓
+SYSTEM PRIORITIZES
+ ↓
+SYSTEM PLANS
+ ↓
+NEXT ACTION
+ ↓
+USER ACTS
+ ↓
+REALITY CHANGES
+ ↓
+SYSTEM ADAPTS
+```
+
+The goal is to demonstrate that AI can participate in an ongoing **decision and action loop**, rather than simply generating text.
 
 ---
 
-# 🎬 Demo Concept
+# 🎬 The Killer Demo
 
-The primary demonstration follows one complete scenario.
+The ideal LifeOS demonstration is simple:
+
+### 1. Give LifeOS messy information
 
 ```text
-MESSY INFORMATION
-       ↓
-AI UNDERSTANDS IT
-       ↓
-TASKS + GOALS + DEADLINES
-       ↓
-PRIORITIZATION
-       ↓
-ACTION PLAN
-       ↓
-NEXT BEST ACTION
-       ↓
-USER MISSES / DELAYS TASK
-       ↓
-AI DETECTS CHANGE
-       ↓
-PLAN ADAPTS
-       ↓
-NEW NEXT ACTION
+Exam Friday.
+Assignment tomorrow.
+Assignment 60% complete.
+Limited time tonight.
 ```
 
-The demo should prove that LifeOS is not simply generating a response.
+### 2. LifeOS understands the situation
 
-**It is managing a changing decision loop.**
+```text
+Tasks
+Goals
+Deadlines
+Progress
+Available time
+```
+
+### 3. LifeOS prioritizes
+
+```text
+Complete Assignment
+```
+
+### 4. LifeOS generates a plan
+
+```text
+Assignment
+        ↓
+Study
+        ↓
+Practice
+        ↓
+Review
+```
+
+### 5. LifeOS gives one Next Action
+
+```text
+Complete the assignment.
+```
+
+### 6. Change reality
+
+```text
+The assignment takes longer than expected.
+```
+
+### 7. LifeOS adapts
+
+```text
+Detect change
+      ↓
+Recalculate
+      ↓
+Protect deadline
+      ↓
+Move lower-priority work
+      ↓
+Generate new plan
+```
+
+### 8. New Next Action
+
+```text
+Continue with the highest-value remaining task.
+```
+
+The important thing is not that LifeOS creates a beautiful schedule.
+
+The important thing is that **the system responds when reality changes.**
 
 ---
 
 # 📈 Success Metrics
 
-Potential measurable outcomes:
+Future evaluation can measure:
 
-- Planning time reduced
-- More tasks completed
-- Fewer missed deadlines
-- Faster decision making
-- Better priority accuracy
-- Successful replanning
-- User satisfaction
+* Time required to create a plan
+* Time required to decide what to do next
+* Task completion rate
+* Missed deadline rate
+* Priority recommendation accuracy
+* Replanning success
+* User satisfaction
+* Plan adherence
 
-Any published metrics should be based on actual testing.
+Any published performance numbers will be based on actual testing.
 
 **No fabricated results.**
 
@@ -1080,76 +1084,101 @@ Any published metrics should be based on actual testing.
 
 # 🔮 Future Vision
 
-LifeOS can eventually connect with:
+The long-term vision for LifeOS is a continuously updated personal action layer.
+
+Instead of requiring users to manually enter every piece of information, LifeOS could eventually understand information from multiple sources:
 
 ```text
-Gmail
-Google Calendar
-Google Drive
-GitHub
-Notion
-Slack
-WhatsApp
-Voice Input
-Mobile Applications
-Browser Extensions
+Email
+  +
+Calendar
+  +
+Documents
+  +
+Tasks
+  +
+Projects
+  +
+Notes
+  +
+Goals
+       ↓
+  LIFEOS CONTEXT
+       ↓
+ PRIORITIZATION
+       ↓
+ ACTION
+       ↓
+ ADAPTATION
 ```
 
-Future versions could allow LifeOS to understand information from multiple sources and build a continuously updated personal action context.
+The goal is not to replace every application.
 
-These integrations are **future scope** and are not required for the core MVP.
+The goal is to sit above them and answer:
+
+> **"Given everything happening right now, what should I do next?"**
 
 ---
 
-# 📌 Product Rules
+# 📌 Product Principles
 
-### Rule 01
+### Rule 01 — Action Over Features
 
 Do not build features simply because they are technically impressive.
 
-### Rule 02
+### Rule 02 — AI Must Matter
 
-AI must perform meaningful work.
+AI should perform meaningful work in the product.
 
-### Rule 03
+### Rule 03 — Reduce Decision Fatigue
 
-The core workflow is more important than feature count.
+The system should make starting easier.
 
-### Rule 04
+### Rule 04 — Explain Recommendations
 
-AI decisions should be explainable.
+Users should understand why an action was recommended.
 
-### Rule 05
+### Rule 05 — Adapt to Reality
 
-A small working workflow is better than many unfinished features.
+A plan should be able to change when circumstances change.
 
-### Rule 06
+### Rule 06 — Focus the MVP
 
-The product should help users **act**, not simply consume more information.
+A small working action loop is more valuable than dozens of unfinished features.
+
+### Rule 07 — Never Fake Results
+
+All performance claims must come from actual testing.
 
 ---
 
 # 🎯 The Product Principle
 
 ```text
-          INFORMATION
-               ↓
-             ACTION
-               ↓
-            PROGRESS
-               ↓
-           ADAPTATION
+        INFORMATION
+             ↓
+          CONTEXT
+             ↓
+          DECISION
+             ↓
+           ACTION
+             ↓
+         PROGRESS
+             ↓
+         ADAPTATION
+             ↓
+        NEW ACTION
 ```
 
-LifeOS is not another place to store tasks.
+LifeOS is not another place to store everything.
 
-It is designed to become a decision layer between:
+It is designed to become the decision layer between:
 
-**What is happening in your life**
+> **What is happening**
 
 and
 
-**What you should do next.**
+> **What you should do next.**
 
 ---
 
@@ -1171,7 +1200,7 @@ AI/ML • Data Science • Full-Stack Development
 
 If you find LifeOS interesting, consider giving the repository a ⭐ Star.
 
-It helps support the project and future development.
+Your support helps the project continue evolving.
 
 ---
 
