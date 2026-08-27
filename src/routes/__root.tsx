@@ -142,7 +142,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
 
-      <body>
+      <body className="bg-[#020508] text-foreground">
         {children}
         <Scripts />
       </body>
