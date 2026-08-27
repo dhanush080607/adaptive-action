@@ -68,14 +68,25 @@ function TaskDetail() {
     },
   });
 
-  if (isLoading) return <div className="panel h-64 animate-pulse" />;
+  // Full-screen loading animation state
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#020508] p-6">
+        <div className="panel h-full w-full animate-pulse" />
+      </div>
+    );
+  }
+
+  // Task not found state
   if (!data) {
     return (
-      <div className="panel p-8 text-center">
-        <h1 className="text-2xl font-semibold">Task not found</h1>
-        <Button className="mt-6" asChild>
-          <Link to="/dashboard">Back to dashboard</Link>
-        </Button>
+      <div className="min-h-[calc(100vh-120px)] bg-[#020508] text-foreground">
+        <div className="panel p-8 text-center">
+          <h1 className="text-2xl font-semibold">Task not found</h1>
+          <Button className="mt-6" asChild>
+            <Link to="/dashboard">Back to dashboard</Link>
+          </Button>
+        </div>
       </div>
     );
   }
@@ -83,7 +94,7 @@ function TaskDetail() {
   const { task, priority, dependencies, blocking, goal } = data;
 
   return (
-    <div className="space-y-6">
+    <div className="min-h-[calc(100vh-120px)] space-y-6 bg-[#020508] text-foreground">
       <header className="panel p-6">
         <div className="flex flex-wrap items-center gap-3">
           <PriorityBadge level={task.priority} />
