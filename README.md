@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  <a href="https://adaptive-action.vercel.app/">🌐 Live Demo</a>
+  <a href="https://adaptive-action.lovable.app/">🌐 Live Demo</a>
   •
   <a href="#-how-lifeos-works">How It Works</a>
   •
