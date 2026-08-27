@@ -32,7 +32,7 @@ function AppShell() {
   };
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-[#020508] text-foreground">
       {/* Glass Floating/Sticky Navbar */}
       <header className="sticky top-0 z-40 border-b border-primary/10 bg-background/60 backdrop-blur-md transition-all duration-200 shadow-sm shadow-primary/5">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 py-2.5 sm:px-6">
